@@ -3,6 +3,9 @@
 
   {{> quickForm collection="Meteor.users" doc=user id="editUserForm" template="bootstrap3-horizontal" input-col-class="controls" type="update" fields=userFields}}
 
+  <img src="{{ getProfileImage }}"/>
+  {{> editYourAvatarModal}}
+
   {{#if isUsingPassword}}
     <a href="{{pathFor "atChangePwd"}}">{{_ "change_password"}}</a>
   {{/if}}
