@@ -8,6 +8,9 @@ Template.user_account.helpers({
   },
   isUsingPassword: function  () {
     return this.services && !!this.services.password;
+  },
+  getProfileImage : function (){
+    return Meteor.user().profile.image;
   }
 });
 
