@@ -8,9 +8,14 @@ Template.user_account.helpers({
   },
   isUsingPassword: function  () {
     return this.services && !!this.services.password;
+  },
+  getProfileImage : function (){
+    // $('#editYourAvatarModal .error').attr('class', 'col-md-9');
+
+    if(Meteor.user().profile.image != null)
+      return Meteor.user().profile.image;
   }
 });
-
 
 AutoForm.hooks({
   editUserForm: {
