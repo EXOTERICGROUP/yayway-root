@@ -1,3 +1,6 @@
 #editYourAvatarModal .error {
- background: white !important;
+  background: white !important;
+}
+#menu_item .sidebar .menu-item-label{
+  padding-left: 15px !important;
 }
