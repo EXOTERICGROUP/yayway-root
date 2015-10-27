@@ -5,12 +5,42 @@
     <div class=".col-md-4" >{{> notifications_menu}}</div> -->
     <table style="table-layout: fixed;" >
       <tr>
-        <!-- {{> avatar user=getLoggedInUser size="small" shape="circle"}} -->
-        <td>{{> user_menu}}</td>
+
         <td>
-          <i class="glyphicon glyphicon-plus" style="color:white;"></i>
+          {{#if isLoggedIn}}
+            <div class="dropdown">
+              <a id="avatar-side-menu" data-target="#" href="http://example.com" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <div class="menu-component user-menu menu-has-items js-collapsed js-menu-container">
+                  <div class="avatar avatar-circle">
+                    <img class="avatar-image" src="{{getUseraProfile}}" alt="avatar" onerror="this.style.display='none';">
+                    <span class="avatar-initials" style="background-color: #aaa; color: #fff;">M</span>
+                  </div>
+                </div>
+              </a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="avatar-side-menu">
+                <li><a href="{{getProfileUrl}}">Profile</a></li>
+                <li><a href="{{getProfileUrl}}/edit">Edit Account</a></li>
+                <li><a href="/sign-out">Sign Out</a></li>
+              </ul>
+            </div>
+          {{else}}
+
+            <a href="{{pathFor 'signIn'}}" aria-label="Left Align">
+              <i class="glyphicon glyphicon-user" style="color:#DD3416;"></i>
+            </a>
+
+          {{/if}}
+
+          <!-- {{> user_menu}} -->
+        </td>
+
+        <td>
+          <a id="submit" class="submit" href="/submit">
+            <i class="glyphicon glyphicon-plus" style="color:white;"></i>
+          </a>
           <!-- {{> submit_button}} -->
         </td>
+
         <td>
           <i class="glyphicon glyphicon-search" style="color:white;"></i>
           <!-- {{> notifications_menu}} -->
