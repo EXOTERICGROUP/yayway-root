@@ -1,5 +1,16 @@
 <template name="user_profile">
-	{{#with user}}
-    {{> modules zone="profileDisplay" moduleData=this}}
-	{{/with}}
+
+	<div class="container-fluid">
+	  <div class="row">
+	    <div class="col-sm-3 sidebar">
+				{{> modules zone="sidebar"}}
+			</div>
+	    <div class="col-sm-9 main">
+				{{#with user}}
+					{{> modules zone="profileDisplay" moduleData=this}}
+				{{/with}}
+			</div>
+	  </div>
+	</div>
+
 </template>
