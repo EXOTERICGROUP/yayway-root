@@ -3,6 +3,16 @@
     <!-- <div class=".col-md-4" >{{> user_menu}}</div>
     <div class=".col-md-4" >{{> submit_button}}</div>
     <div class=".col-md-4" >{{> notifications_menu}}</div> -->
+    <script type="text/javascript">
+      function toggler(divId) {
+        $("#" + divId).toggle();
+      }
+    </script>
+
+    <div id="searchDiv" style="display: none">
+      {{> search}}
+    </div>
+
     <table style="table-layout: fixed;" >
       <tr>
         <td>
@@ -37,7 +47,7 @@
         </td>
 
         <td>
-          <i class="glyphicon glyphicon-search" style="color:white;"></i>
+          <i onclick="toggler('searchDiv');" class="glyphicon glyphicon-search" style="color:white;"></i>
           <!-- {{> notifications_menu}} -->
         </td>
       </tr>
