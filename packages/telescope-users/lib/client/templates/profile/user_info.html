@@ -11,7 +11,8 @@
                     {{#if template}}
                       {{>Template.dynamic template=template data=value}}<br>
                     {{else}}
-                      <div style="font-size: x-large; font-weight: bold;">
+                      <!-- <div style="font-size: x-large; font-weight: bold;"> -->
+                      <div style="{{getUrlStyle(label)}}">
                        {{value}}<br>
                       </div>
                     {{/if}}
