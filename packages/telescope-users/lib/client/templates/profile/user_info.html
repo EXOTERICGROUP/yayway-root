@@ -18,7 +18,24 @@
                     {{/if}}
               {{/each}}
                       facebook.com/admin<br>
-
+                      <div>
+                        <div style="width: 78px;">
+                          {{#if canEditProfile}}
+                            <a class="edit-profile-button button btn btn-primary inline" href="{{pathFor 'userEdit' _idOrSlug=this.telescope.slug}}">{{_ "edit_profile"}}</a>
+                          {{/if}}
+                          {{#if canInvite}}
+                            {{#if isAdmin}}
+                              <a class="button btn btn-primary inline invite-link" href="#">{{_ "invite"}}</a>
+                            {{else}}
+                              {{#if inviteCount}}
+                                <a class="button btn btn-primary inline invite-link" href="#">{{_ "invite"}} ({{inviteCount}} {{_ "left"}})</a>
+                              {{else}}
+                                <a class="button btn inline disabled" href="#">{{_ "invite_none_left"}}</a>
+                              {{/if}}
+                            {{/if}}
+                          {{/if}}
+                        </div>
+                      </div>
             </div>
     </div>
     <!-- <div class="row">
@@ -78,19 +95,5 @@
         </tr>
       {{/each}} -->
     <!-- </table> -->
-    {{#if canEditProfile}}
-      <a class="edit-profile-button button btn btn-primary inline" href="{{pathFor 'userEdit' _idOrSlug=this.telescope.slug}}">{{_ "edit_profile"}}</a>
-    {{/if}}
-    {{#if canInvite}}
-      {{#if isAdmin}}
-        <a class="button btn btn-primary inline invite-link" href="#">{{_ "invite"}}</a>
-      {{else}}
-        {{#if inviteCount}}
-          <a class="button btn btn-primary inline invite-link" href="#">{{_ "invite"}} ({{inviteCount}} {{_ "left"}})</a>
-        {{else}}
-          <a class="button btn inline disabled" href="#">{{_ "invite_none_left"}}</a>
-        {{/if}}
-      {{/if}}
-    {{/if}}
   </div>
 </template>
