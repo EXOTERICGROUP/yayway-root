@@ -1,10 +1,15 @@
 <template name="user_account">
+  <div class="grid-module cover-block-widhth-height-edit-profile">
+    {{> editCoverImage user=this }}
+  </div>
   <div class="grid-small grid-module dialog user-edit">
 
-  <img src="{{ getProfileImage }}" style=" cursor: pointer; margin-left: -15px;" onclick="$('#editYourAvatarModal').modal();"/>
+  <img src="{{ getProfileImage }}" style=" cursor: pointer; margin-left: 4%;" onclick="$('#editYourAvatarModal').modal();"/>
   {{> editYourAvatarModal}}
 
-  <div>
+  {{> quickForm collection="Meteor.users" doc=user id="editUserForm" template="bootstrap3-horizontal" input-col-class="controls" type="update" fields=userFields}}
+
+  <div style=" cursor: pointer; margin-left: -2%;">
     <h3 class="blue">New friendship requests</h3>
     <table class="table table-bordered table-hover">
       <tr>
@@ -33,7 +38,7 @@
       {{/if}}
     </table>
   </div>
-  <div>
+  <div style=" cursor: pointer; margin-left: -2%;">
     <h3 class="blue">My buddy List</h3>
     <table class="table table-bordered table-hover">
       <tr>
@@ -62,8 +67,6 @@
       {{/if}}
     </table>
   </div>
-
-  {{> quickForm collection="Meteor.users" doc=user id="editUserForm" template="bootstrap3-horizontal" input-col-class="controls" type="update" fields=userFields}}
 
   {{#if isUsingPassword}}
     <a href="{{pathFor "atChangePwd"}}">{{_ "change_password"}}</a>
