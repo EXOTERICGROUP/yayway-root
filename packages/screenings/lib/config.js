@@ -1,4 +1,5 @@
 Telescope.config.addCustomPrefix("scr_");
+// Telescope.config.addCustomPrefix("zah_");
 
 // Telescope.modules.add("primaryNav", {
 //   template: "tagline",
@@ -25,13 +26,13 @@ Telescope.modules.add("footer", {
 // });
 
 Telescope.modules.add("sidebar", [
-  // {
-  //   template: "intro",
-  //   order: 0
-  // },
   {
-    template: "search",
-    order: 1 
+    template: "intro",
+    order: 0
+  },
+  {
+    template: "placeholder",
+    order: 1
   },
   {
     template: "views_menu",
@@ -44,11 +45,12 @@ Telescope.modules.add("sidebar", [
   {
     template: "footer_social",
     order: 4
-  },
-  {
-    template: "placeholder",
-    order: 5
-  }
+  }//,
+  // {
+  //   template: "search",
+  //   order: 5
+  // }
+
 ]);
 
 Telescope.colorElements.add(".sidebar .menu-item .menu-item-label-wrapper", "accentColor", "border-color");
@@ -63,6 +65,3 @@ Telescope.colorElements.add(".footer-social .social-link", "accentColor", "color
 Telescope.colorElements.add(".footer-social .social-link:hover", "accentColor", "background");
 Telescope.colorElements.add(".footer-social .social-link:hover", "accentContrastColor", "color");
 Telescope.colorElements.add(".footer-social .social-link:hover", "accentColor", "border-color");
-
-
-

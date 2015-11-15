@@ -1,0 +1,57 @@
+<template name="zah_footer_social">
+  <div class=".col-md-12 user-menu-wrapper {{moduleClass}}">
+    <!-- <div class=".col-md-4" >{{> user_menu}}</div>
+    <div class=".col-md-4" >{{> submit_button}}</div>
+    <div class=".col-md-4" >{{> notifications_menu}}</div> -->
+    <script type="text/javascript">
+      function toggler(divId) {
+        $("#" + divId).toggle();
+      }
+    </script>
+
+    <div id="searchDiv" style="display: none">
+      {{> search}}
+    </div>
+
+    <table style="table-layout: fixed;" >
+      <tr>
+        <td>
+          {{#if isLoggedIn}}
+            <div class="btn-group dropup">
+              <a class="btn dropdown-toggle" id="avatar-side-menu" data-target="#" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <div class="menu-component user-menu menu-has-items js-collapsed js-menu-container">
+                  <div class="avatar avatar-circle">
+                    <img class="avatar-image" src="{{getUseraProfile}}" alt="avatar" onerror="this.style.display='none';">
+                    <span class="avatar-initials" style="background-color: #aaa; color: #fff;">M</span>
+                  </div>
+                </div>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="{{getProfileUrl}}">Profile</a></li>
+                <li><a href="{{getProfileUrl}}/edit">Edit Account</a></li>
+                <li><a href="/sign-out">Sign Out</a></li>
+              </ul>
+            </div>
+          {{else}}
+            <a href="{{pathFor 'signIn'}}" aria-label="Left Align">
+              <i class="glyphicon glyphicon-user" style="color:#DD3416;"></i>
+            </a>
+          {{/if}}
+        </td>
+          <!-- {{> user_menu}}  -->
+        <td>
+          <a id="submit" class="submit" href="/submit">
+            <i class="glyphicon glyphicon-plus" style="color:white;"></i>
+          </a>
+          <!-- {{> submit_button}} -->
+        </td>
+
+        <td>
+          <i onclick="toggler('searchDiv');" class="glyphicon glyphicon-search" style="color:white;"></i>
+          <!-- {{> notifications_menu}} -->
+        </td>
+      </tr>
+    </table>
+  </div>
+    <!-- {{> notifications_menu}} -->
+</template>

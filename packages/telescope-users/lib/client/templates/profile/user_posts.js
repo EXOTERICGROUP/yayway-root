@@ -2,7 +2,7 @@ Template.user_posts.helpers({
   arguments: function () {
     var user = this;
     return {
-      template: "posts_list_compact",
+      template: "posts_list",
       options: {
         currentUser: user,
         fieldLabel: i18n.t("postedAt"),

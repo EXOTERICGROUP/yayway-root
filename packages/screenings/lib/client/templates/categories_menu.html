@@ -1,7 +1,10 @@
 <template name="scr_categories_menu">
-  <div class="categories-menu-wrapper {{moduleClass}}">
+  <!-- <div class="categories-menu-wrapper {{moduleClass}}"> -->
+  <div>
+    <br/>
     {{#if hasCategories}}
-      {{> menuComponent menuName="categories" menuLabel=menuLabel menuItems=customMenuItems itemTemplate="categories_menu_item"}}
+      <!-- {{> menuComponent menuName="categories" menuLabel=menuLabel  menuItems=customMenuItems itemTemplate="categories_menu_item"}} -->
+      {{> menuComponent menuName="categories" menuItems=customMenuItems itemTemplate="categories_menu_item"}}
     {{/if}}
   </div>
 </template>
