@@ -64,6 +64,22 @@
 .user-profile-avatar{
   margin-bottom: 20px;
 }
+.avatar-width-height {
+    width: 150px;
+    height: 150px;
+}
+.cover-block-widhth-height{
+    position: absolute;
+    width: 94%;
+    height: 300px;
+}
+.cover-block-widhth-height-edit-profile{
+    width: 94%;
+    cursor: pointer;
+    margin-left: 2%;
+    height: 175px;
+    background-color: dimgray;
+}
 .edit-profile-button{
   margin-top: 20px;
 }
