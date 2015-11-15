@@ -126,9 +126,10 @@ Template.user_info.events({
     });
   },
   'click #btnSendFriendRequest': function(event, template){
-    if(!IsRequestExists()){
-      insertIntoRequests(Meteor.userId(), this._id );
-    }
+    // if(!IsRequestExists()){
+    //   insertIntoRequests(Meteor.userId(), this._id );
+      acceptFriendRequest(Meteor.userId(), this._id );
+    // }
   },
   'click #btnRemoveFriendRequest': function (event, template){
     // console.log("requesterId"+ this.requesterId + " followingId" + this.followingId);
@@ -173,23 +174,23 @@ denyFriendShip = function (requesterId, followingId) {
 
 acceptFriendRequest = function (requesterId, followingId) {
   friendsRef.insert({ "requesterId" : requesterId, "followingId" : followingId });
-  friendsRef.insert({ "requesterId" : followingId, "followingId" : requesterId });
-  console.log("friendship started");
-  var requestCollection =  requestsRef.find({ "requesterId" : requesterId, "followingId" : followingId }).fetch();
-  console.log("requesterId:" + requesterId +" followingId:" + followingId);
-  for (req of requestCollection) {
-      console.log(req._id);
-      requestsRef.remove({ "_id" : req._id});
-  }
+  // friendsRef.insert({ "requesterId" : followingId, "followingId" : requesterId });
+  // console.log("friendship started");
+  // var requestCollection =  requestsRef.find({ "requesterId" : requesterId, "followingId" : followingId }).fetch();
+  // console.log("requesterId:" + requesterId +" followingId:" + followingId);
+  // for (req of requestCollection) {
+  //     console.log(req._id);
+  //     requestsRef.remove({ "_id" : req._id});
+  // }
 
-  requestCollection =  requestsRef.find({ "requesterId" : followingId, "followingId" : requesterId }).fetch();
-  console.log("requesterId:" + followingId +" followingId:" + requesterId);
-  for (req of requestCollection) {
-      console.log(req._id);
-      requestsRef.remove({ "_id" : req._id});
-  }
-
-  console.log("----request cleaned up!----");
+  // requestCollection =  requestsRef.find({ "requesterId" : followingId, "followingId" : requesterId }).fetch();
+  // console.log("requesterId:" + followingId +" followingId:" + requesterId);
+  // for (req of requestCollection) {
+  //     console.log(req._id);
+  //     requestsRef.remove({ "_id" : req._id});
+  // }
+  //
+  // console.log("----request cleaned up!----");
 }
 
 removeFriendShip = function (requesterId, followingId ) {
