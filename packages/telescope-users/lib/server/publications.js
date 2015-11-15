@@ -56,11 +56,11 @@ Meteor.publish('allUsersAdmin', function() {
 });
 
 Meteor.publish('allRequests', function () {
-  return requestsRef.find();
+  return Users.requestsRef.find();
 });
 
 Meteor.publish('allFriends', function () {
-  return friendsRef.find();
+  return Users.friendsRef.find();
 });
 
 // Publish all users to reactive-table (if admin)
@@ -75,8 +75,8 @@ ReactiveTable.publish("all-users", function() {
   }
 });
 
-requestsRef = new Mongo.Collection("requests");
-requestsRef.allow({
+// requestsRef = new Mongo.Collection("requests");
+Users.requestsRef.allow({
   insert: function (userId, doc) {
     // the user must be logged in, and the document must be owned by the user
     // return (userId && doc.owner === userId);
@@ -93,8 +93,8 @@ requestsRef.allow({
     return true;
   }
 });
-friendsRef = new Mongo.Collection("friends");
-friendsRef.allow({
+// friendsRef = new Mongo.Collection("friends");
+Users.friendsRef.allow({
   insert: function (userId, doc) {
     // the user must be logged in, and the document must be owned by the user
     // return (userId && doc.owner === userId);

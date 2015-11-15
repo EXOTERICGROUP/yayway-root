@@ -29,7 +29,8 @@ Package.onUse(function (api) {
     'lib/menus.js',
     'lib/pubsub.js',
     'lib/methods.js',
-    'lib/routes.js'
+    'lib/routes.js',
+    'lib/friends.js'
   ], ['client', 'server']);
 
   api.addFiles([
@@ -84,7 +85,7 @@ Package.onUse(function (api) {
     return "i18n/"+language+".i18n.json";
   });
   api.addFiles(languagesPaths, ["client", "server"]);
-  
+
   api.export('Users');
 
 });
