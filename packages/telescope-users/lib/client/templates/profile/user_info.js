@@ -3,6 +3,15 @@ Template.user_info.helpers({
     var currentUser = Meteor.user();
     return currentUser && (this._id === currentUser._id || Users.is.admin(currentUser));
   },
+  getUrlStyle : function (label){
+
+    if(label == "Name" ){
+      return "font-size: x-large; font-weight: bold;";
+    }
+    else {
+      return "";
+    }
+  },
   getProfileImage : function (){
 
     if(Meteor.user().profile.image != null){

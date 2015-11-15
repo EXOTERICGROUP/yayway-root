@@ -42,6 +42,8 @@ Package.onUse(function (api) {
     'lib/client/templates/views_menu.html',
     'lib/client/templates/views_menu_item.html',
     'lib/client/stylesheets/screenings.scss',
+    'lib/client/templates/footer_social.html',
+    'lib/client/templates/footer_social.js',
 
   ], ['client']);
 
@@ -56,7 +58,7 @@ Package.onUse(function (api) {
     'assets/logo.svg',
     'assets/bg.jpg',
     'assets/favicon.ico'
-    
+
     // 'assets/icons/best.svg',
     // 'assets/icons/new.svg',
     // 'assets/icons/short.svg',
@@ -79,5 +81,5 @@ Package.onUse(function (api) {
     // 'assets/icons/ux.svg'
 
   ], ["client", "server"]);
-  
+
 });

@@ -1,6 +1,9 @@
 <template name="scr_categories_menu_item">
-  <a class="menu-item-label" href="{{itemRoute}}">
+   <!-- <a class="menu-item-label" href="{{itemRoute}}">
     <div class="menu-item-icon">{{{getSVG item.data.slug}}}</div>
     <span class="menu-item-label-text">{{{getItemLabel}}}</span>
-  </a>
+  </a> -->
+  <a class="menu-item-label" href="{{itemRoute}}">
+  <span class="scr_categories_menu_item_id">{{{getItemLabel}}}</span>
+ </a>
 </template>
