@@ -5,169 +5,61 @@
   <div class="" style="z-index: 2; margin-top: -14%;margin-left: 4%;">
     <div class="row col-xs-12" style="margin-top: -29px; color: white">
       <div class="col-xs-2 user-profile-avatar avatar-width-height">{{> avatar user=this size="large" shape="circle" class="avatar-width-height"}}</div>
-      <div class="col-xs-8" style="z-index: 2; margin-top: -10%;margin-left: 4%; color:black">
-        {{#each publicProfileFields}}
-             <!-- {{label}} -->
-              {{#if template}}
-                {{>Template.dynamic template=template data=value}}<br>
-              {{else}}
-                <!-- <div style="font-size: x-large; font-weight: bold;"> -->
-                <div style="{{getUrlStyle(label)}}">
-                 {{value}}<br>
-                </div>
-              {{/if}}
-        {{/each}}
-        facebook.com/admin<br>
-        <div>
-          <!-- <a id="btnSendFriendRequest" class="button btn btn-primary inline invite-link" href="{{currentUserProfileId}}">Follow</a> -->
-          {{#if isNotMyProfile}}
-            {{#if isRequestExists this._id }}
-              <a class="btn btn-info disabled">Friendship Request Sent!</a>
-            {{else}}
-              {{#if isUserMyFriend this._id}}
-                  <!-- <button class="btn btn-primary btn-sm" id="btnRemoveFriendRequest">Remove from Friend List</button> -->
-                <a id="btnRemoveFriendRequest" class="button btn btn-primary inline">End Friendship</a>
-              {{else}}
-                <a id="btnSendFriendRequest" class="button btn btn-primary inline">Request Friendship</a>
-              {{/if}}
-            {{/if}}
-          {{/if}}
-          <!-- {{ this._id}} current user id-->
-          <!-- <div style="width: 78px;"> -->
-            {{#if canEditProfile}}
-              <a class="button btn btn-primary inline" href="{{pathFor 'userEdit' _idOrSlug=this.telescope.slug}}">{{_ "edit_profile"}}</a>
-            {{/if}}
-            {{#if canInvite}}
-              {{#if isAdmin}}
-                <a class="button btn btn-primary inline invite-link" href="#">{{_ "invite"}}</a>
-              {{else}}
-                {{#if inviteCount}}
-                  <a class="button btn btn-primary inline invite-link" href="#">{{_ "invite"}} ({{inviteCount}} {{_ "left"}})</a>
-                {{else}}
-                  <a class="button btn inline disabled" href="#">{{_ "invite_none_left"}}</a>
-                {{/if}}
-              {{/if}}
-            {{/if}}
-          <!-- </div> -->
-        </div>
-      </div>
     </div>
-    <!-- <div class="row">
-      <div class=".col-xs-6">
-            {{> avatar user=this size="large" shape="circle"}}
-      </div>
-      <div class=".col-xs-6">
-        abc
-            {{#each publicProfileFields}}
-                 {{label}}
-                  {{#if template}}
-                    {{>Template.dynamic template=template data=value}}
-                  {{else}}
-                    {{value}}
-                  {{/if}}
-            {{/each}}
-      </div>
-    </div> -->
   </div>
   <div class="user-profile grid grid-module" style="margin-top: -9px; background-color: dimgray;">
     <div class="row">
-        <div class="col-xs-6 col-sm-4" style="color:white; font-size: x-large; font-weight: bold; padding-left: 7%;">
-          <div class="row" >FEED</div>
-          <div class="row" style="font-weight: normal;font-style: italic;">Last Post - 18 Days ago</div>
-        </div>
-        <div class="col-xs-6 col-sm-4"></div>
-        <div class="col-xs-6 col-sm-4" style="color:white; font-size: x-large; font-weight: bold;">
-          <div style="float: right; margin-right: 14%;">
-            <div class="row">10000<i class="glyphicon glyphicon-heart-empty" style="color:purple"></i></div>
-            <div class="row">10900<i class="glyphicon glyphicon-dashboard" style="color:pink"></i></div>
+        <div style="z-index: 2;color:white; padding-left: 7%;">
+          <div class="row">
+            <div>
+              {{#each publicProfileFields}}
+                   <!-- {{label}} -->
+                    {{#if template}}
+                      <div style="word-wrap: break-word;width: 95%;" >{{>Template.dynamic template=template data=value}}</div>
+                    {{else}}
+                      <!-- <div style="font-size: x-large; font-weight: bold;"> -->
+                      <div style="{{getUrlStyle(label)}}">
+                        <div disabled style="width:100%" >{{value}}</div>
+                      </div>
+                    {{/if}}
+              {{/each}}
+              <div>
+                {{#if currentUser}}
+                  <!-- <a id="btnSendFriendRequest" class="button btn btn-primary inline invite-link" href="{{currentUserProfileId}}">Follow</a> -->
+                  {{#if isNotMyProfile}}
+                    {{#if isRequestExists this._id }}
+                      <a class="btn btn-info disabled">Friendship Request Sent!</a>
+                    {{else}}
+                      {{#if isUserMyFriend this._id}}
+                          <!-- <button class="btn btn-primary btn-sm" id="btnRemoveFriendRequest">Remove from Friend List</button> -->
+                        <a id="btnRemoveFriendRequest" class="button btn btn-primary inline">End Friendship</a>
+                      {{else}}
+                        <a id="btnSendFriendRequest" class="button btn btn-primary inline">Follow</a>
+                      {{/if}}
+                    {{/if}}
+                  {{/if}}
+                  <!-- {{ this._id}} current user id-->
+                  <!-- <div style="width: 78px;"> -->
+                    {{#if canEditProfile}}
+                      <a class="button btn btn-primary inline" href="{{pathFor 'userEdit' _idOrSlug=this.telescope.slug}}">{{_ "edit_profile"}}</a>
+                    {{/if}}
+                    {{#if canInvite}}
+                      {{#if isAdmin}}
+                        <a class="button btn btn-primary inline invite-link" href="#">{{_ "invite"}}</a>
+                      {{else}}
+                        {{#if inviteCount}}
+                          <a class="button btn btn-primary inline invite-link" href="#">{{_ "invite"}} ({{inviteCount}} {{_ "left"}})</a>
+                        {{else}}
+                          <a class="button btn inline disabled" href="#">{{_ "invite_none_left"}}</a>
+                        {{/if}}
+                      {{/if}}
+                    {{/if}}
+                  <!-- </div> -->
+                  {{/if}}
+              </div>
+            </div>
           </div>
         </div>
     </div>
-    <!-- <table class="user-info"> -->
-      <!-- {{#if isAdmin}}
-        <tr>
-          <td>{{_ "id"}}: </td>
-          <td>{{_id}}</td>
-        </tr>
-      {{/if}} -->
-        <!-- <tr>
-          <td style="color:white; font-size: x-large; font-weight: bold;">FEED</td>
-        </tr>
-        <tr>
-          <td  style="color:white; font-size: x-large; font-style: italic;">Last post - 18 days ago</td>
-        </tr> -->
-      <!-- {{#each publicProfileFields}}
-        <tr>
-          <td>{{label}}</td>
-          <td>
-            {{#if template}}
-              {{>Template.dynamic template=template data=value}}
-            {{else}}
-              {{value}}
-            {{/if}}
-          </td>
-        </tr>
-      {{/each}} -->
-    <!-- </table> -->
   </div>
-  <!-- {{#if isMyProfile}}
-    <div>
-      <h3 class="blue">New friendship requests</h3>
-      <table class="table table-bordered table-hover">
-        <tr>
-          <td><strong>Request ID</strong></td>
-          <td><strong>Request From</strong></td>
-          <td><strong>Accept</strong></td>
-          <td><strong>Deny</strong></td>
-        </tr>
-        {{#if currentUser}}
-          {{#each getMyFriendRequests}}
-            <tr>
-              <td>{{_id}}</td>
-              {{#if getUsernameById requesterId}}
-                <td>{{getUsernameById requesterId}}</td>
-              {{else}}
-                <td>{{requesterId}}</td>
-              {{/if}}
-              <td>
-                <button class="btn btn-success btn-sm" id="btnAcceptFriendRequest">Accept Friend Request</button>
-              </td>
-              <td>
-                <button class="btn btn-danger btn-sm" id="btnDenyFriendRequest">Deny Friend Request</button>
-              </td>
-            </tr>
-          {{/each}}
-        {{/if}}
-      </table>
-    </div>
-    <div>
-      <h3 class="blue">My buddy List</h3>
-      <table class="table table-bordered table-hover">
-        <tr>
-          <td><strong>Friendship ID</strong></td>
-          <td><strong>Friend</strong></td>
-          <td><strong>Option</strong></td>
-        </tr>
-        {{#if currentUser}}
-          {{#each getMyFriendsList this._id }}
-            <tr>
-              {{_id}}
-              {{#if getUsernameById requesterId}}
-                <td>
-                  {{getUsernameById requesterId}}
-                </td>
-              {{else}}
-                <td>
-                  {{requesterId}}
-                </td>
-              {{/if}}
-              <td>
-                <button class="btn btn-primary btn-sm" id="btnRemoveFriendRequest">Remove from Friend List</button>
-              </td>
-            </tr>
-          {{/each}}
-        {{/if}}
-      </table>
-    </div>
-  {{/if}} -->
 </template>
