@@ -31,7 +31,7 @@ Template.user_account.helpers({
   getMyFriendsList : function (currentUserId ) {
     console.log("getting friends list");
     console.log(currentUserId);
-    var result = friendsRef.find({ "followingId" : currentUserId });
+    var result = Users.friendsRef.find({ "followingId" : currentUserId });
     console.log(result);
     console.log("----end of result----");
     return result;
@@ -99,8 +99,8 @@ denyFriendShip = function (requesterId, followingId) {
 }
 
 acceptFriendRequest = function (requesterId, followingId) {
-  friendsRef.insert({ "requesterId" : requesterId, "followingId" : followingId });
-  friendsRef.insert({ "requesterId" : followingId, "followingId" : requesterId });
+  Users.friendsRef.insert({ "requesterId" : requesterId, "followingId" : followingId });
+  Users.friendsRef.insert({ "requesterId" : followingId, "followingId" : requesterId });
   console.log("friendship started");
   var requestCollection =  requestsRef.find({ "requesterId" : requesterId, "followingId" : followingId }).fetch();
   console.log("requesterId:" + requesterId +" followingId:" + followingId);
@@ -120,23 +120,23 @@ acceptFriendRequest = function (requesterId, followingId) {
 }
 
 removeFriendShip = function (requesterId, followingId ) {
-  var result = friendsRef.find({ "followingId" : followingId, "requesterId": requesterId }).fetch();
+  var result = Users.friendsRef.find({ "followingId" : followingId, "requesterId": requesterId }).fetch();
 
   for (friendship of result) {
       console.log("friendshipId:" + friendship._id);
       console.log("requesterId:"+ friendship.requesterId );
       console.log("followingId:" + friendship.followingId);
-      friendsRef.remove( {"_id": friendship._id} );
+      Users.friendsRef.remove( {"_id": friendship._id} );
       console.log("Removed friendship:" + friendship._id);
   }
 
-  var result = friendsRef.find({ "followingId" : requesterId , "requesterId": followingId }).fetch();
+  var result = Users.friendsRef.find({ "followingId" : requesterId , "requesterId": followingId }).fetch();
   for (friendship of result) {
       console.log("----------Next friendship----------");
       console.log("friendshipId:" + friendship._id);
       console.log("requesterId:"+ friendship.requesterId );
       console.log("followingId:" + friendship.followingId);
-      friendsRef.remove( {"_id": friendship._id} );
+      Users.friendsRef.remove( {"_id": friendship._id} );
       console.log("Removed friendship:" + friendship._id);
   }
   return;
