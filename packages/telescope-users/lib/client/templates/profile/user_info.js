@@ -56,12 +56,10 @@ Template.user_info.helpers({
     return !!this.services.password
   },
   currentUserProfileId: function  () {
-    console.log(Meteor.userId());
     return this._id;
   },
   isMyProfile: function () {
       if(Meteor.userId() !== this._id){
-        console.log("not my profile!");
         return false;
       }
       return true;
@@ -71,22 +69,9 @@ Template.user_info.helpers({
         return true;
       return false;
   },
-  getMyFriendRequests : function () {
-    console.log("here");
-    var result = requestsRef.find({ "followingId" : Meteor.userId() });
-    console.log(result.fetch());
-    return result;
-  },
-  isRequestExists : function ( followingId) {
-    var rows = requestsRef.find({ "requesterId" : Meteor.userId(), "followingId" : followingId }).count();
-    console.log("rows found" + rows);
-    console.log("requesterId:" + Meteor.userId(), "followingId:" + followingId );
-    return rows;
-  },
   getUsernameById : function (_id) {
     var users = Meteor.users.find({"_id":_id}).fetch();
     for (u of users) {
-      console.log(u.username);
       return u.username;
     }
   },
@@ -114,14 +99,9 @@ Template.user_info.events({
     });
   },
   'click #btnSendFriendRequest': function(event, template){
-    // if(!IsRequestExists()){
-    //   insertIntoRequests(Meteor.userId(), this._id );
       acceptFriendRequest(Meteor.userId(), this._id );
-    // }
   },
   'click #btnRemoveFriendRequest': function (event, template){
-    // console.log("requesterId"+ this.requesterId + " followingId" + this.followingId);
-    // console.log("a: " + template.requesterId + " b:"+ template.followingId);
     if(typeof this.requesterId === "undefined" && typeof this.followingId === "undefined")
       removeFriendShip(Meteor.userId(), this._id );
     removeFriendShip(this.requesterId, this.followingId);
@@ -130,30 +110,9 @@ Template.user_info.events({
     acceptFriendRequest(this.requesterId, Meteor.userId());
   },
   'click #btnDenyFriendRequest': function (event, template){
-    // console.log("requesterId"+ this.requesterId + " followingId" + this.followingId);
     denyFriendShip(this.requesterId, this.followingId);
   }
 });
-
-IsRequestExists = function (requesterId, followingId) {
-  var rows = requestsRef.find({ "requesterId" : requesterId, "followingId" : followingId }).count();
-  console.log("rows found" + rows);
-  return rows;
-}
-
-denyFriendShip = function (requesterId, followingId) {
-  var result = requestsRef.find({ "followingId" : followingId, "requesterId": requesterId }).fetch();
-
-  for (req of result) {
-      console.log("requestId:" + req._id);
-      console.log("requesterId:"+ req.requesterId );
-      console.log("followingId:" + req.followingId);
-      var tempId = req._id;
-      requestsRef.remove( {"_id": req._id} );
-      console.log("Denied friendship:" +tempId);
-  }
-  return;
-}
 
 acceptFriendRequest = function (requesterId, followingId) {
   Users.friendsRef.insert({ "requesterId" : requesterId, "followingId" : followingId });
@@ -163,21 +122,12 @@ removeFriendShip = function (requesterId, followingId ) {
   var result = Users.friendsRef.find({ "followingId" : followingId, "requesterId": requesterId }).fetch();
 
   for (friendship of result) {
-      console.log("friendshipId:" + friendship._id);
-      console.log("requesterId:"+ friendship.requesterId );
-      console.log("followingId:" + friendship.followingId);
       Users.friendsRef.remove( {"_id": friendship._id} );
-      console.log("Removed friendship:" + friendship._id);
   }
 
   var result = Users.friendsRef.find({ "followingId" : requesterId , "requesterId": followingId }).fetch();
   for (friendship of result) {
-      console.log("----------Next friendship----------");
-      console.log("friendshipId:" + friendship._id);
-      console.log("requesterId:"+ friendship.requesterId );
-      console.log("followingId:" + friendship.followingId);
       Users.friendsRef.remove( {"_id": friendship._id} );
-      console.log("Removed friendship:" + friendship._id);
   }
   return;
 }
