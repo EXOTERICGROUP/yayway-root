@@ -15,7 +15,7 @@ FlowRouter.route('/users/:_idOrSlug', {
 FlowRouter.route('/users/:_idOrSlug/edit', {
   name: "userEdit",
   action: function(params, queryParams) {
-    BlazeLayout.render("layout", {main: "user_controller", userTemplate: "user_edit"});
+    BlazeLayout.render("layout", {main: "user_controller", userTemplate: "user_edit_"});
   }
 });
 
