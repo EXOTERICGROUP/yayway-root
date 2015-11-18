@@ -1,8 +1,19 @@
 <template name="admin_wrapper">
-  <div class="grid admin-wrapper">
-    {{> admin_menu}}
-    <div class="admin-contents {{currentRouteName}}-contents">
-      {{> Template.dynamic template=admin}}
-    </div>
-  </div>
+
+  <div class="container-fluid">
+	  <div class="row">
+	    <div class="col-sm-3 sidebar">
+				{{> modules zone="sidebar"}}
+			</div>
+	    <div class="col-sm-9 main">
+        <div class="grid admin-wrapper">
+          {{> admin_menu}}
+          <div class="admin-contents {{currentRouteName}}-contents">
+            {{> Template.dynamic template=admin}}
+          </div>
+        </div>
+			</div>
+	  </div>
+	</div>
+  
 </template>
