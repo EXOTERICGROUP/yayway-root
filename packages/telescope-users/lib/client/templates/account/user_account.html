@@ -9,7 +9,7 @@
 
   {{> quickForm collection="Meteor.users" doc=user id="editUserForm" template="bootstrap3-horizontal" input-col-class="controls" type="update" fields=userFields}}
 
-  <div style=" cursor: pointer; margin-left: -2%;">
+  <!-- <div style=" cursor: pointer; margin-left: -2%;">
     <h3 class="blue">New friendship requests</h3>
     <table class="table table-bordered table-hover">
       <tr>
@@ -37,14 +37,14 @@
         {{/each}}
       {{/if}}
     </table>
-  </div>
+  </div> -->
   <div style=" cursor: pointer; margin-left: -2%;">
-    <h3 class="blue">My buddy List</h3>
+    <h3 class="blue">My Followers</h3>
     <table class="table table-bordered table-hover">
       <tr>
-        <td><strong>Friendship ID</strong></td>
-        <td><strong>Friend</strong></td>
-        <td><strong>Option</strong></td>
+        <td><strong>Follower ID</strong></td>
+        <td><strong>Follower</strong></td>
+        <td><strong>Remove</strong></td>
       </tr>
       {{#if currentUser}}
         {{#each getMyFriendsList this._id }}
@@ -60,7 +60,7 @@
               </td>
             {{/if}}
             <td>
-              <button class="btn btn-primary btn-sm" id="btnRemoveFriendRequest">Remove from Friend List</button>
+              <button class="btn btn-primary btn-sm" id="btnRemoveFriendRequest">Remove from Followers</button>
             </td>
           </tr>
         {{/each}}

@@ -36,6 +36,7 @@ Package.onUse(function (api) {
     'lib/client/templates/intro.html',
     'lib/client/templates/placeholder.html',
     'lib/client/templates/main_posts_list.html',
+    'lib/client/templates/main_posts_list.js',
     'lib/client/templates/categories_menu.html',
     'lib/client/templates/categories_menu.js',
     'lib/client/templates/categories_menu_item.html',
