@@ -1,19 +1,21 @@
 <template name="header">
-  <!-- <header class="header {{headerClass}}">
+  <header class="mobile-only header {{headerClass}}" style="margin-top: 59px">
 
     <a href="#menu" class="mobile-only mobile-menu-button button">
       {{{icon "menu"}}}
     </a>
 
-    {{> logo}}
+	<a class="mobile-only" style="padding-left: 20%;" href="/"><img src="/Images/logo.png" alt="loading..." width="270px" height="150px"></a>
 
-    {{#if hasPrimaryNav}}
+    <!-- {{> logo}} -->
+
+    <!-- {{#if hasPrimaryNav}}
       {{> modules zone="primaryNav" zoneClass="nav primary-nav desktop-nav header-module desktop-only" moduleClass="header-submodule"}}
     {{/if}}
 
     {{#if hasSecondaryNav}}
       {{> modules zone="secondaryNav" zoneClass="nav secondary-nav desktop-nav header-module desktop-only" moduleClass="header-submodule"}}
-    {{/if}}
+    {{/if}} -->
 
-  </header> -->
+  </header>
 </template>

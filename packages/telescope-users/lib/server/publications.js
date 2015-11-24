@@ -55,10 +55,6 @@ Meteor.publish('allUsersAdmin', function() {
   return [];
 });
 
-Meteor.publish('allRequests', function () {
-  return Users.requestsRef.find();
-});
-
 Meteor.publish('allFriends', function () {
   return Users.friendsRef.find();
 });
@@ -72,24 +68,5 @@ ReactiveTable.publish("all-users", function() {
     return Meteor.users;
   } else {
     return [];
-  }
-});
-
-// requestsRef = new Mongo.Collection("requests");
-Users.requestsRef.allow({
-  insert: function (userId, doc) {
-    // the user must be logged in, and the document must be owned by the user
-    // return (userId && doc.owner === userId);
-    return true;
-  },
-  update: function (userId, doc, fields, modifier) {
-    // can only change your own documents
-    // return doc.owner === userId;
-    return true;
-  },
-  remove: function (userId, doc) {
-    // can only remove your own documents
-    // return doc.owner === userId;
-    return true;
   }
 });

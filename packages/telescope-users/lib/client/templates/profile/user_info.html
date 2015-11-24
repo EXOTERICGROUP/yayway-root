@@ -17,7 +17,6 @@
                     {{#if template}}
                       <div style="word-wrap: break-word;width: 95%;" >{{>Template.dynamic template=template data=value}}</div>
                     {{else}}
-                      <!-- <div style="font-size: x-large; font-weight: bold;"> -->
                       <div style="{{getUrlStyle(label)}}">
                         <div disabled style="width:100%" >{{value}}</div>
                       </div>
@@ -25,21 +24,13 @@
               {{/each}}
               <div>
                 {{#if currentUser}}
-                  <!-- <a id="btnSendFriendRequest" class="button btn btn-primary inline invite-link" href="{{currentUserProfileId}}">Follow</a> -->
                   {{#if isNotMyProfile}}
-                    {{#if isRequestExists this._id }}
-                      <a class="btn btn-info disabled">Friendship Request Sent!</a>
+                    {{#if isUserMyFriend this._id}}
+                      <a id="btnRemoveFriendRequest" class="button btn btn-primary inline">Un-Follow</a>
                     {{else}}
-                      {{#if isUserMyFriend this._id}}
-                          <!-- <button class="btn btn-primary btn-sm" id="btnRemoveFriendRequest">Remove from Friend List</button> -->
-                        <a id="btnRemoveFriendRequest" class="button btn btn-primary inline">Un-Follow</a>
-                      {{else}}
-                        <a id="btnSendFriendRequest" class="button btn btn-primary inline">Follow</a>
-                      {{/if}}
+                      <a id="btnSendFriendRequest" class="button btn btn-primary inline">Follow</a>
                     {{/if}}
                   {{/if}}
-                  <!-- {{ this._id}} current user id-->
-                  <!-- <div style="width: 78px;"> -->
                     {{#if canEditProfile}}
                       <a class="button btn btn-primary inline" href="{{pathFor 'userEdit' _idOrSlug=this.telescope.slug}}">{{_ "edit_profile"}}</a>
                     {{/if}}
@@ -54,7 +45,6 @@
                         {{/if}}
                       {{/if}}
                     {{/if}}
-                  <!-- </div> -->
                   {{/if}}
               </div>
             </div>

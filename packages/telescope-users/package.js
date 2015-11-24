@@ -60,6 +60,7 @@ Package.onUse(function (api) {
     'lib/client/templates/profile/user_profile_bio.html',
     'lib/client/templates/profile/user_profile_twitter.html',
     'lib/client/templates/sign_out.html',
+    'lib/client/templates/user_edit_.html',
     'lib/client/templates/user_edit.html',
     'lib/client/templates/user_complete.html',
     'lib/client/templates/user_complete.js',

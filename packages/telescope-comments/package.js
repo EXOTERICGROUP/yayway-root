@@ -27,6 +27,7 @@ Package.onUse(function (api) {
   ], ['client', 'server']);
 
   api.addFiles([
+    'lib/client/templates/comment_edit_.html',
     'lib/client/templates/comment_edit.html',
     'lib/client/templates/comment_edit.js',
     'lib/client/templates/comment_submit.html',
@@ -35,6 +36,7 @@ Package.onUse(function (api) {
     'lib/client/templates/comment_item.js',
     'lib/client/templates/comment_list.html',
     'lib/client/templates/comment_list.js',
+    'lib/client/templates/comment_reply_.html',
     'lib/client/templates/comment_reply.html',
     'lib/client/templates/comment_reply.js',
     'lib/client/templates/comments_list/comments_list.html',

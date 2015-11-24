@@ -1,4 +1,4 @@
-<template name="user_profile">
+<template name="post_edit_">
 
 	<div class="container-fluid">
 	  <div class="row">
@@ -6,9 +6,7 @@
 				{{> modules zone="sidebar"}}
 			</div>
 	    <div class="col-sm-9 main">
-				{{#with user}}
-					{{> modules zone="profileDisplay" moduleData=this}}
-				{{/with}}
+        {{>post_edit}}
 			</div>
 	  </div>
 	</div>
