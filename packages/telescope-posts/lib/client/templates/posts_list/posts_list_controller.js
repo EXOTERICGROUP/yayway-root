@@ -111,11 +111,14 @@ Template.posts_list_controller.helpers({
     var parameters = Posts.parameters.get(terms);
     var postsCursor = null;//Posts.find(parameters.find, parameters.options);
     // debugger;
-    if(Meteor.user()){
+
+    if(FlowRouter.current().path == "/follow_feeds"){
+      console.log("FlowRouter-start");
       var userIds =  _.pluck(Users.friendsRef.find( {requesterId : Meteor.userId()} ).fetch(), "followingId" )
       userIds.push(Meteor.userId())
       console.log(userIds);
       postsCursor = Posts.find( { userId:{ $in: userIds } } , parameters.options);
+      console.log("FlowRouter-end");
     }
     else
       postsCursor = Posts.find(parameters.find, parameters.options);
