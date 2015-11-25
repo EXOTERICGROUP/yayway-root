@@ -5,6 +5,13 @@ FlowRouter.route('/', {
   }
 });
 
+FlowRouter.route('/follow_feeds', {
+  name: "followFeeds",
+  action: function(params, queryParams) {
+    BlazeLayout.render("layout", {main: "main_posts_list"});
+  }
+});
+
 FlowRouter.route('/posts/:_id/edit', {
   name: "postEdit",
   action: function(params, queryParams) {
