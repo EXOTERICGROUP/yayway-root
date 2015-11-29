@@ -33,3 +33,10 @@ FlowRouter.route('/sign-out', {
     Messages.flash(i18n.t("you_have_been_logged_out"));
   }]
 });
+
+FlowRouter.route('/welcomeToYayWay', {
+  name: "welcomeToYayWay",
+  action: function(params, queryParams) {
+    BlazeLayout.render("layout", {main: "welcomeToYayWay"});
+  }
+});
