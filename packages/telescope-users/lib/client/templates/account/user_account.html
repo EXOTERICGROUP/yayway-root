@@ -5,8 +5,11 @@
   <div class="grid-small grid-module dialog user-edit">
 
   <img src="{{ getProfileImage }}" style=" cursor: pointer; margin-left: 4%;" onclick="$('#editYourAvatarModal').modal();"/>
-  {{> editYourAvatarModal}}
-
+  {{> editYourAvatarModal}} <br>
+  <div style="text-align: left;font-size: smaller; color:red">* The recommend size for the cover image is 917 x 300px. The image size must be less than 512kb to upload.</div>
+  <br>
+  <br>
+  <br>
   {{> quickForm collection="Meteor.users" doc=user id="editUserForm" template="bootstrap3-horizontal" input-col-class="controls" type="update" fields=userFields}}
 
   <div style=" cursor: pointer; margin-left: -2%;">
