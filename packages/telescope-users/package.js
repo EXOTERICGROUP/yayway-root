@@ -73,7 +73,9 @@ Package.onUse(function (api) {
     'lib/client/templates/nav/user_menu_label.html',
     'lib/client/templates/nav/user_menu_label.js',
     'lib/client/templates/user_controller/user_controller.html',
-    'lib/client/templates/user_controller/user_controller.js'
+    'lib/client/templates/user_controller/user_controller.js',
+    'lib/client/templates/welcomeToYayWay.html',
+    'lib/client/templates/welcomeToYayWay.js'
   ], ['client']);
 
   api.addFiles([
