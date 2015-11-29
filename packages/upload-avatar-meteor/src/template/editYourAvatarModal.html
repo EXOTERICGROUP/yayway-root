@@ -21,7 +21,7 @@
                     </div>
                 </div>
             </div>
-        </div>      
+        </div>
     </div>
 </template>
 
@@ -32,22 +32,24 @@
             <img id="avatarUserImg" src="{{ image }}" class="" alt="" />
 
             <input type="file" name="avatarFile" class="hide" />
-            
+
             {{#unless is_image}}
                 <p> Please upload image with dimensions of 160x160px </p>
             {{/unless}}
 
             {{#if is_image}}
-                <p> Please crop and select area to upload</p>
-                <input type="button" id="changeAvatarButton" value="Change My Avatar" />
+                <small>* Please crop and select area to upload from your chosen avatar</small><br>
+                <input type="button" id="changeAvatarButton" value="Change My Avatar" /><br>
+                <small style="color:red">Recommend size of avatar is 150x150px</small>
             {{/if}}
         </div>
 
         <div class="col-md-3">
             <div id="previewFrame" class="hide">
                 <div id="preview">
-                    <img src="{{ image }}"/>
+                    <img src="{{ image }}"/><br>
                 </div>
+                    <div style="text-align: center;font-size: smaller;">Avatar Preview</div>
              </div>
         </div>
     </div>
