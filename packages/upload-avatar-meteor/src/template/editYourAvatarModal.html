@@ -32,7 +32,15 @@
             <img id="avatarUserImg" src="{{ image }}" class="" alt="" />
 
             <input type="file" name="avatarFile" class="hide" />
-            <input type="button" id="changeAvatarButton" value="Change My Avatar" />
+            
+            {{#unless is_image}}
+                <p> Please upload image with dimensions of 160x160px </p>
+            {{/unless}}
+
+            {{#if is_image}}
+                <p> Please crop and select area to upload</p>
+                <input type="button" id="changeAvatarButton" value="Change My Avatar" />
+            {{/if}}
         </div>
 
         <div class="col-md-3">
