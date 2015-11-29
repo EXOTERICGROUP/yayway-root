@@ -21,6 +21,11 @@ Template.editYourAvatarModalBody.image = function(){
     else
         return AVATAR; 
 };
+
+Template.editYourAvatarModalBody.is_image = function(){
+    return Meteor.user().profile.image
+};
+
 Template.editYourAvatarModal.rendered = function(){
     var tmpl = this;
     // cache the dom
