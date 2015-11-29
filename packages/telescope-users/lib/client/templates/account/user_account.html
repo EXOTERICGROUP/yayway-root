@@ -10,41 +10,12 @@
   {{> quickForm collection="Meteor.users" doc=user id="editUserForm" template="bootstrap3-horizontal" input-col-class="controls" type="update" fields=userFields}}
 
   <div style=" cursor: pointer; margin-left: -2%;">
-    <h3 class="blue">New friendship requests</h3>
+    <h3 class="blue">My Followers</h3>
     <table class="table table-bordered table-hover">
       <tr>
-        <td><strong>Request ID</strong></td>
-        <td><strong>Request From</strong></td>
-        <td><strong>Accept</strong></td>
-        <td><strong>Deny</strong></td>
-      </tr>
-      {{#if currentUser}}
-        {{#each getMyFriendRequests}}
-          <tr>
-            <td>{{_id}}</td>
-            {{#if getUsernameById requesterId}}
-              <td>{{getUsernameById requesterId}}</td>
-            {{else}}
-              <td>{{requesterId}}</td>
-            {{/if}}
-            <td>
-              <button class="btn btn-success btn-sm" id="btnAcceptFriendRequest">Accept Friend Request</button>
-            </td>
-            <td>
-              <button class="btn btn-danger btn-sm" id="btnDenyFriendRequest">Deny Friend Request</button>
-            </td>
-          </tr>
-        {{/each}}
-      {{/if}}
-    </table>
-  </div>
-  <div style=" cursor: pointer; margin-left: -2%;">
-    <h3 class="blue">My buddy List</h3>
-    <table class="table table-bordered table-hover">
-      <tr>
-        <td><strong>Friendship ID</strong></td>
-        <td><strong>Friend</strong></td>
-        <td><strong>Option</strong></td>
+        <td><strong>Follower ID</strong></td>
+        <td><strong>Follower</strong></td>
+        <td><strong>Remove</strong></td>
       </tr>
       {{#if currentUser}}
         {{#each getMyFriendsList this._id }}
@@ -60,7 +31,7 @@
               </td>
             {{/if}}
             <td>
-              <button class="btn btn-primary btn-sm" id="btnRemoveFriendRequest">Remove from Friend List</button>
+              <button class="btn btn-primary btn-sm" id="btnRemoveFriendRequest">Remove from Followers</button>
             </td>
           </tr>
         {{/each}}

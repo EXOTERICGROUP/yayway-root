@@ -29,7 +29,8 @@ Package.onUse(function (api) {
     'lib/menus.js',
     'lib/pubsub.js',
     'lib/methods.js',
-    'lib/routes.js'
+    'lib/routes.js',
+    'lib/friends.js'
   ], ['client', 'server']);
 
   api.addFiles([
@@ -59,6 +60,7 @@ Package.onUse(function (api) {
     'lib/client/templates/profile/user_profile_bio.html',
     'lib/client/templates/profile/user_profile_twitter.html',
     'lib/client/templates/sign_out.html',
+    'lib/client/templates/user_edit_.html',
     'lib/client/templates/user_edit.html',
     'lib/client/templates/user_complete.html',
     'lib/client/templates/user_complete.js',
@@ -84,7 +86,7 @@ Package.onUse(function (api) {
     return "i18n/"+language+".i18n.json";
   });
   api.addFiles(languagesPaths, ["client", "server"]);
-  
+
   api.export('Users');
 
 });

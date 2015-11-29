@@ -2,15 +2,15 @@
 
 /*
 
-This template acts as the controller that sets and manages the reactive context 
+This template acts as the controller that sets and manages the reactive context
 for the embedded postsList template. It receives its parameters from a "caller" template.
 
-The goal is to resubscribe when either one of the following events happens: 
+The goal is to resubscribe when either one of the following events happens:
 - The external data context passed to the template from its parent changes
 - The template's own internal rLimit ReactiveVar changes
 
 In both cases, the template should resubscribe to the publication, and then once the subscription is ready
-update the terms used by the template helper's Posts.find(). 
+update the terms used by the template helper's Posts.find().
 
 */
 
@@ -82,7 +82,7 @@ Template.posts_list_controller.onDataChanged(function (data) {
   var template = this;
   var oldTerms = template.terms;
   var newTerms = data.terms;
-  
+
   // console.log("// ------ onDataChanged ------ //")
   // console.log("oldTerms: ", _.clone(oldTerms));
   // console.log("newTerms: ", _.clone(newTerms));
@@ -109,7 +109,19 @@ Template.posts_list_controller.helpers({
     var postsReady = template.rReady.get(); // ⚡ reactive ⚡
 
     var parameters = Posts.parameters.get(terms);
-    var postsCursor = Posts.find(parameters.find, parameters.options);
+    var postsCursor = null;//Posts.find(parameters.find, parameters.options);
+    // debugger;
+
+    if(FlowRouter.current().path == "/follow_feeds"){
+      console.log("FlowRouter-start");
+      var userIds =  _.pluck(Users.friendsRef.find( {requesterId : Meteor.userId()} ).fetch(), "followingId" )
+      userIds.push(Meteor.userId())
+      console.log(userIds);
+      postsCursor = Posts.find( { userId:{ $in: userIds } } , parameters.options);
+      console.log("FlowRouter-end");
+    }
+    else
+      postsCursor = Posts.find(parameters.find, parameters.options);
 
     // if (debug) {
     //   console.log("// -------- data -------- //")

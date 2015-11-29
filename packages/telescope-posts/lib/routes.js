@@ -5,17 +5,24 @@ FlowRouter.route('/', {
   }
 });
 
+FlowRouter.route('/follow_feeds', {
+  name: "followFeeds",
+  action: function(params, queryParams) {
+    BlazeLayout.render("layout", {main: "main_posts_list"});
+  }
+});
+
 FlowRouter.route('/posts/:_id/edit', {
   name: "postEdit",
   action: function(params, queryParams) {
-    BlazeLayout.render("layout", {main: "post_edit"});
+    BlazeLayout.render("layout", {main: "post_edit_"});
   }
 });
 
 FlowRouter.route('/posts/:_id/:slug?', {
   name: "postPage",
   action: function(params, queryParams) {
-    BlazeLayout.render("layout", {main: "post_page"});
+    BlazeLayout.render("layout", {main: "post_page_"});
   }
 });
 
@@ -27,6 +34,6 @@ var trackRouteEntry = function (context) {
 FlowRouter.route('/submit', {
   name: "postSubmit",
   action: function(params, queryParams) {
-    BlazeLayout.render("layout", {main: "post_submit"});
+    BlazeLayout.render("layout", {main: "post_submit_"});
   }
 });
