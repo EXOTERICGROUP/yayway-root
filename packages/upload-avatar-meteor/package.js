@@ -15,8 +15,7 @@ Package.on_use(function (api) {
 
     api.addAssets([
         'src/vendor/imgareaselect/border-anim-h.gif',
-        'src/vendor/imgareaselect/border-anim-v.gif',
-        'src/vendor/imgareaselect/imgareaselect-animated.css'
+        'src/vendor/imgareaselect/border-anim-v.gif'
     ], client);
 
     //add file
@@ -25,6 +24,7 @@ Package.on_use(function (api) {
     ], both);
 
     api.add_files([
+        'src/vendor/imgareaselect/imgareaselect-animated.css',
         'src/vendor/imgareaselect/jquery.imgareaselect.pack.js',
         'src/client.js',
         'src/template/editYourAvatarModal.html',
