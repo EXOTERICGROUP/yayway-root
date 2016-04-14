@@ -2,6 +2,23 @@
 // // AccountsTemplates configuration
 // //////////////////////////////////
 
+var mySubmitFunc = function(error, state){
+  if (!error) {
+    if (state === "signIn") {
+      // Successfully logged in
+      // ...
+      console.log("signIn:----------------abc----------------");
+    }
+    if (state === "signUp") {
+      // Successfully registered
+      // ...
+      FlowRouter.redirect('/welcomeToYayWay');
+      console.log("signUp:----------------abc----------------");
+    }
+  }
+};
+
+
 AccountsTemplates.configure({
   defaultLayout: 'layout',
   defaultLayoutRegions: {},
@@ -11,6 +28,10 @@ AccountsTemplates.configure({
   confirmPassword: false,
   overrideLoginErrors: true,
   lowercaseUsername: true,
+
+  // homeRoutePath: '/follow_feeds',
+  redirectTimeout: 4000,
+  onSubmitHook: mySubmitFunc,
 
   negativeFeedback: false,
   positiveFeedback: false,

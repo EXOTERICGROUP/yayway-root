@@ -1,0 +1,39 @@
+<template name="welcomeToYayWay">
+  <div style="color:white">
+    <p class="text-center">
+      <h1>Welcome to Yayway</h1>
+      <h2>
+        Lets get you started!<br>
+        Please follow few profiles to get their feeds instantly...
+      </h2>
+      <h3>
+        Ofcourse - You can always un-follow few of them later.
+      </h3>
+    </p>
+    <p>
+      You are now following {{counter}} people.<br><br>
+      {{#if areWeGood}}
+        <a href="/" type="button" class="btnRemoveFriendRequest btn btn-success center-block">We're Good!</a>
+      {{else}}
+      Please select atleast 3 to continue.<br>
+      {{/if}}
+    </p>
+  </div>
+  <div style="color:white">
+    <div class="row">
+      {{#each getAllUsers}}
+        <div class="col-xs-6 col-sm-4" style="padding-bottom: 2%;">
+          <p class="text-center">{{username}}</p>
+          <img src="{{profile.image}}" width="150px" height="150px" class="img-rounded img-responsive center-block" />
+          <!-- <button id="{{_id}}" class="center-block">Follow</button> -->
+          {{#if isUserMyFriend this._id}}
+            <button id="{{_id}}" type="button" class="btnRemoveFriendRequest btn btn-success center-block">Un-Follow</button>
+          {{else}}
+            <button id="{{_id}}" type="button" class="btnSendFriendRequest btn btn-warning center-block">Follow</button>
+          {{/if}}
+        </div>
+      {{/each}}
+    </div>
+  </div>
+
+</template>

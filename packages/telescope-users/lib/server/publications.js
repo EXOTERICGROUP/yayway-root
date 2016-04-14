@@ -59,6 +59,10 @@ Meteor.publish('allFriends', function () {
   return Users.friendsRef.find();
 });
 
+Meteor.publish('all-follow-users', function () {
+  return Users.find({},{"username" : 1, "profile" : 1, "_id": 1});
+});
+
 // Publish all users to reactive-table (if admin)
 // Limit, filter, and sort handled by reactive-table.
 // https://github.com/aslagle/reactive-table#server-side-pagination-and-filtering-beta
